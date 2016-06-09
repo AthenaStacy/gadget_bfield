@@ -1,0 +1,209 @@
+%  Relevant files
+
+%InitCondFile                            /scratch/00863/minerva/bin_zoom10_ref4_0020
+InitCondFile                             /scratch/00863/minerva/bin_zoom10_ref4_divsmooth_0340
+%InitCondFile                            /scratch/00863/minerva/bin_zoom10_ref4_newtstep_0435
+%InitCondFile                            /scratch/00863/minerva/bin_zoom10_ref4_nosmooth_0420
+%InitCondFile                            /scratch/00863/minerva/bin_zoom10_ref4_lowsmooth_0412
+
+%InitCondFile                            /scratch/00863/minerva/bin_zoom10_ref3_0020
+%InitCondFile                            /scratch/00863/minerva/bin_zoom10_ref3_newtstep_0258
+%InitCondFile                            /scratch/00863/minerva/bin_zoom10_ref3_divclean_0090
+
+OutputDir                               /scratch/00863/minerva/
+EnergyFile				energyb.txt
+InfoFile				infob.txt
+TimingsFile				timingsb.txt
+CpuFile					cpub.txt
+SinkFile				sinksb.txt
+RestartFile				restart
+
+%SnapshotFileBase                        bin_zoom10_ref4_newtstep
+%SnapshotFileBase                        bin_zoom10_ref4_newsmooth
+%SnapshotFileBase                        bin_zoom10_ref4_endsmooth
+SnapshotFileBase                        bin_zoom10_ref4_divsmooth
+
+%SnapshotFileBase                        bin_zoom10_ref3_newtstep
+%SnapshotFileBase                        bin_zoom10_ref3_divclean
+
+OutputListFilename			outputs.txt
+
+
+% CPU time -limit
+
+TimeLimitCPU				1000000.0
+ResubmitOn				0
+ResubmitCommand				none
+
+
+% Code options
+
+ICFormat				1
+SnapFormat				1
+ComovingIntegrationOn			1
+TypeOfTimestepCriterion			0
+OutputListOn				1
+PeriodicBoundariesOn			0
+TurbulenceOn				0
+
+
+%  Caracteristics of run
+
+TimeBegin				0.01
+TimeMax					0.036
+%TimeMax                                 0.1
+Omega0					0.3
+OmegaLambda				0.7
+OmegaBaryon				0.04
+HubbleParam				0.7
+%BoxSize					1000.0
+BoxSize                                        200.0
+
+% Output frequency
+
+TimeBetSnapshot				1.01
+TimeOfFirstSnapshot			0.0101
+CpuTimeBetRestartFile			1000000.0
+TimeBetStatistics			0.01
+NumFilesPerSnapshot			1
+NumFilesWrittenInParallel		1
+
+
+% Accuracy of time integration
+
+ErrTolIntAccuracy			0.02
+MaxRMSDisplacementFac			0.2
+CourantFac				0.1
+%MaxSizeTimestep				1.e-5
+%MaxSizeTimestep                         1.e-4
+MaxSizeTimestep                         1.e-2
+MinSizeTimestep				1.e-14
+
+
+% Tree algorithm, force accuracy, domain update frequency
+
+ErrTolTheta				0.7
+TypeOfOpeningCriterion			1
+ErrTolForceAcc				0.0025
+TreeDomainUpdateFrequency		0.1
+
+
+%  Further parameters of SPH
+
+DesNumNgb				200
+MaxNumNgbDeviation			1
+ArtBulkViscConst			0.75
+InitGasTemp				0.0
+MinGasTemp				10.0
+
+
+% Memory allocation
+
+PartAllocFactor				2.5
+TreeAllocFactor				3.0
+BufferSize				150
+
+
+% System of units
+
+UnitLength_in_cm			3.085678e21
+UnitMass_in_g				1.989e43
+UnitVelocity_in_cm_per_s		1.0e5
+GravityConstantInternal			0
+
+
+% Softening lengths
+
+MinGasHsmlFractional			3.57e-1
+SofteningGas				0.001
+SofteningHalo				0.08
+SofteningDisk				0.0
+SofteningBulge				0.0
+SofteningStars				0.0
+SofteningBndry				0.0
+SofteningGasMaxPhys			0.01
+SofteningHaloMaxPhys			0.08
+SofteningDiskMaxPhys			0.0
+SofteningBulgeMaxPhys			0.0
+SofteningStarsMaxPhys			0.0
+SofteningBndryMaxPhys			0.0
+
+
+% Sink particle parameters
+
+%SinkCriticalDens			1.e3
+%SinkCriticalDens                       1.e8
+%SinkCriticalDens                       2.e8
+SinkCriticalDens                        1.e13   ;for bin_zoom10_ref2 and _ref3
+RInner					2.32954e-07      ;in PHYSICAL units of kpc
+ROuter					2.32954e-07
+HSinkCreate				0.01
+MaxNumSinks				1000
+SinkCriticalRedshift			40.0
+
+
+% Other
+
+RefinementMass				0.035
+%max_dens				1.0e4
+%max_dens                               5.0e8
+%max_dens                               5.0e7
+max_dens                               1.0e10  ;for bin_zoom10_ref_
+%max_dens                               1.0e12  ;for bin_zoom10_ref2 and _ref3
+ray_crit_dens				1.e16
+%ray_r_max_sink				100.0
+ray_r_max_sink                         1000.0
+ray_flag_sun				0
+
+
+% Chemistry
+
+H2RefDustEff				0.0
+PhotochemApprox				0
+DustToGasRatio				0.0
+
+InitDustTemp				10.0
+PhiPAH					1.0
+UVField					0.0
+
+AVConversionFactor			5.348e-22
+CosmicRayIonRate			0.0
+InitRedshift				99.0
+MNRateFlag				4
+ADRateFlag				3
+AtomicFlag				2
+
+ExternalDustExtinction			0.0
+ChemistryNetwork			1
+ThreeBodyFlagA				2
+ThreeBodyFlagB				1
+H3PlusRateFlag				1
+
+DeutAbund				2.6e-5
+
+OxyAbund				1.3e-5
+CarbAbund				4.4e-6
+SiAbund					8.5e-7
+MgAbund					0.0
+
+InitMolHydroAbund			1.1e-6
+InitHPlusAbund				3.0e-4
+InitDIIAbund				1.2e-8
+InitHDAbund				1.0e-9
+InitHeIIAbund				0.0
+InitHeIIIAbund				0.0
+
+InitOIIAbund				0.0
+InitCIIAbund				0.0
+InitSiIIAbund				0.0
+InitCOAbund				0.0
+InitC2Abund				0.0
+InitOHAbund				0.0
+InitH2OAbund				0.0
+InitO2Abund				0.0
+InitHCOPlusAbund			0.0
+InitCHAbund				0.0
+InitCH2Abund				0.0
+InitSiIIIAbund				0.0
+InitCH3PlusAbund			0.0
+InitMgPlusAbund				0.0
